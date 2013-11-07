@@ -1,4 +1,11 @@
-how-to-ride-a-dragon
+How to Ride a Dragon
 ====================
 
-A dsl for riding a dragon
+A dsl harness for riding a dragon
+
+Testing
+-------
+
+``` sh
+rake test
+```
