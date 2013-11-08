@@ -22,9 +22,9 @@ end
 
 harness trainer: @person, animal: @dragon do
   fly do
-    ascend 200 feet
-    move forward 50 feet
-    land
+    course 45
+    mark 20
+    speed 100
   end
 end
 ```

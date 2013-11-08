@@ -17,6 +17,11 @@ class HarnessTest < Test::Unit::TestCase
   end
 
   def test_person_flies_dragon
+    harness trainer: @person, animal: @dragon do
+      fly do; end
+    end
+
+    assert @dragon.flying?
   end
 
   def test_dragon_ascends
