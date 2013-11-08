@@ -20,11 +20,39 @@ class HarnessTest < Test::Unit::TestCase
     harness trainer: @person, animal: @dragon do
       fly do; end
     end
-
     assert @dragon.flying?
   end
 
-  def test_dragon_ascends
+  def test_dragon_moves_laterally
+    harness trainer: @person, animal: @dragon do
+      fly do
+        course 45
+      end
+    end
+    assert_equal 45, @dragon.direction
+  end
+
+  def test_dragon_moves_laterally_and_vertically
+    harness trainer: @person, animal: @dragon do
+      fly do
+        course 45
+        mark 20
+      end
+    end
+    assert_equal 45, @dragon.direction
+    assert_equal 20, @dragon.angle
+  end
+
+  def test_dragon_moves_over_time
+    harness trainer: @person, animal: @dragon do
+      fly 10.seconds do
+        course 45
+        mark 20
+        speed 100
+      end
+    end
+
+
   end
 
   def test_dragon_descends

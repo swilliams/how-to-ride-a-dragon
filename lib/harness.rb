@@ -1,5 +1,17 @@
 require 'pry'
 require 'pry-nav'
+
+# should probably move this to another class, but whatevs
+class Fixnum
+  def seconds
+    self
+  end
+
+  def minutes
+    self * 60
+  end
+end
+
 module Harness
   def harness options, &block
     @harness_trainer = options[:trainer]
@@ -11,8 +23,8 @@ module Harness
     @harness_trainer.harness @harness_animal, &block
   end
 
-  def fly
-    @harness_animal.fly
+  def fly(duration = 1.minutes, &block)
+    @harness_animal.fly(duration, &block)
   end
 
   module PersonInstanceMethods
@@ -29,14 +41,28 @@ module Harness
   end
 
   module AnimalInstanceMethods
-    attr_accessor :flying
+    attr_accessor :flying, :direction, :angle, :speed, :duration
 
     def flying?
       self.flying
     end
 
-    def fly
+    def fly(duration, &block)
+      self.duration = duration
       self.flying = true
+      instance_eval(&block)
+    end
+
+    def course(direction)
+      self.direction = direction
+    end
+
+    def mark(angle)
+      self.angle = angle
+    end
+
+    def speed(s)
+      self.speed = s
     end
   end
 end
