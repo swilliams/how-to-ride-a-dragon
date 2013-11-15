@@ -1,7 +1,7 @@
 How to Ride a Dragon
 ====================
 
-A dsl harness for riding a dragon
+A dsl harness for riding a dragon. First pass, so it's in need of a refactoring.
 
 Testing
 -------
